@@ -1,12 +1,23 @@
 module ShopSensor
   class Configuration
-    Config = Struct.new 'Config', :api_key
+    Config = Struct.new 'Config', :api_key, :locale
 
-    DEFAULTS = {}
+    DEFAULTS = {
+      locale: :en_US
+    }
+    SITES = {
+      en_US: 'www.shopstyle.com',
+      en_GB: 'www.shopstyle.co.uk',
+      fr_FR: 'www.shopstyle.fr',
+      de_DE: 'www.shopstyle.de',
+      ja_JP: 'www.shopstyle.co.jp',
+      en_AU: 'www.shopstyle.com.au',
+      en_CA: 'www.shopstyle.ca'
+    }
 
     def initialize settings={}
       @config = Config.new
-      set settings
+      set DEFAULTS.merge(settings)
     end
 
     def configure &block
@@ -16,6 +27,18 @@ module ShopSensor
 
     def clear!
       set DEFAULTS
+    end
+
+    def site
+      SITES[@config.locale.intern]
+    end
+
+    def clone
+      self.class.new self.to_h
+    end
+
+    def to_h
+      @config.to_h
     end
 
     private
