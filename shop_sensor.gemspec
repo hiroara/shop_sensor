@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = ShopSensor::VERSION
   spec.authors       = ["Arai Hiroki"]
   spec.email         = ["hiroara62@gmail.com"]
-  spec.summary       = %q{Client library of ShopSense API}
-  spec.description   = %q{This is a client library of ShopSense API.}
-  spec.homepage      = ""
+  spec.summary       = %q{Unofficial client library of ShopSense API}
+  spec.description   = %q{This is unofficial client library of ShopSense API (http://shopsense.shopstyle.com/shopsense/7234015).}
+  spec.homepage      = "https://github.com/hiroara/shop_sensor"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
